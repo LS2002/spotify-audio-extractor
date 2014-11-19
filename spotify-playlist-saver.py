@@ -20,7 +20,6 @@ def main():
 
     spotify_playlist_user = '<replace-with-playlist-username>'
 
-    # url_playlist = 'https://play.spotify.com/user/p3_sverigesradio/playlist/6KD0ncYdI9GNt5f9U4ONSo'
     url_playlist = 'https://play.spotify.com/user/'+spotify_playlist_user+'/playlist/0SPKCBmcMSnTEpUM2jBxFt'
 
     # profile = webdriver.FirefoxProfile()
@@ -70,26 +69,18 @@ def main():
             # print ','.join([str(index), spotify_track_url, spotify_artist_name, spotify_track_title, spotify_album_name, spotify_track_duration])
 
 
-    country = "Michael_Andrews"
+    country = "<replace-with-artist-or-whaterever>"
 
     createFolder(country)
     time.sleep(2)
 
     debug = False
-    # timeToSaveSpotifyAudio = 30
-    # timeToStopSpotify = 30
-
-    # writeXML("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<feed>\n", country)
-    # writeYAML("---\n", country)
     for index, value in enumerate(spotify_list):
         audioUrl =  value[0]
         artistName = value[1].replace(' ','_')
         trackTitle = value[2].replace(' ','_').replace('\'','').replace('$','').replace('-','_').replace(',','_')
         albumName = value[3].replace(' ','_').replace('(','').replace(')','')
         duration = value[4]
-        # writeXML("<entry><id>" + country + "_" + str(index).zfill(
-        #     3) + "</id><artist>" + artistName + "</artist><track>" + trackTitle + "</track><album>" + albumName + "</album></entry>\n",
-        #          country)
 
         print ','.join([str(index+1), audioUrl, artistName, trackTitle, albumName, duration])
 
@@ -115,7 +106,6 @@ def main():
 
         time.sleep(2)
 
-    # writeXML("</feed>", country)
     setAudioInputOutput("reset")
 
 def playAudioFile(audio_path, timeToStopSpotify):
